@@ -1,0 +1,10 @@
+.article-textarea{
+  outline: none;
+  border: 1px #fff;
+  resize: none;
+}
+.article-textarea:focus{
+  border: none;
+  border-left: 3px solid cornflowerblue;
+  outline: none;
+}
