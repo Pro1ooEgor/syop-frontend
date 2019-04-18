@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 // import Home from './views/Home.vue'
-import Article from './views/inputs/Article'
+import Editor from './components/input/editor/Editor'
+import newArticle from './views/newArticle'
 import Some from './views/inputs/Some'
 import HelloWorld from './components/HelloWorld'
 
@@ -18,8 +19,13 @@ export default new Router({
     },
     {
       path: '/article/new',
-      name: 'article',
-      component: Article
+      name: 'newArticle',
+      component: newArticle
+    },
+    {
+      path: '/article/editor',
+      name: 'Editor',
+      component: Editor
     },
     {
       path: '/some',
