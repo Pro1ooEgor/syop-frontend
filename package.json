@@ -12,6 +12,7 @@
     "bootstrap-vue": "^2.0.0-rc.19",
     "core-js": "^2.6.5",
     "highlight.js": "^9.15.6",
+<<<<<<< HEAD
     "jquery": "^3.4.1",
     "popper.js": "^1.15.0",
     "quill": "^1.3.6",
@@ -19,6 +20,11 @@
     "vue": "^2.6.10",
     "vue-router": "^3.0.6",
     "vuelidate": "^0.7.4",
+=======
+    "quill": "^1.3.6",
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.6",
+>>>>>>> add many new
     "vuex": "^3.0.1"
   },
   "devDependencies": {

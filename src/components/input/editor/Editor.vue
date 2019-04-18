@@ -27,7 +27,6 @@ import 'quill-emoji'
 
 import toolbarOptions from './toolbarOptions'
 
-
 Quill.register('modules/imageResize', ImageResize)
 Quill.register('modules/imageDrop', ImageDrop)
 

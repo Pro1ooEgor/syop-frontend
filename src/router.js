@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+// import Home from './views/Home.vue'
 import Editor from './components/input/editor/Editor'
 import newArticle from './views/newArticle'
-import Some from './views/Some'
+import Some from './views/inputs/Some'
 import HelloWorld from './components/HelloWorld'
 import Register from './views/login/register'
 import Login from './views/login/login'
@@ -19,5 +20,5 @@ export default new Router({
     { path: '/some', name: 'some', component: Some },
     { path: '/register', name: 'register', component: Register },
     { path: '/login', name: 'login', component: Login }
-  ]
+]
 })
