@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="container-fluid">
-      <editor v-model="model"></editor>
+      <editor v-model="model" @change="onChange"></editor>
     </div>
 
-    <p v-html="model"></p>
+    <p v-html="model" class="ql-editor"></p>
   </div>
 </template>
 
@@ -16,6 +16,12 @@ export default {
   data () {
     return {
       model: `<h2 class="ql-align-center"><span class="ql-font-serif">Text content loading..</span></h2>`
+    }
+  },
+  methods: {
+    onChange (changeObject) {
+      console.log(changeObject)
+      this.$store.commit('changeArticle', changeObject.html)
     }
   },
   components: {
