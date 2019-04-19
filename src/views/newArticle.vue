@@ -1,6 +1,6 @@
 <template>
-  <div class="container-fluid">
-    <div>
+  <div>
+    <div class="container-fluid">
       <editor v-model="model" @change="onChange"></editor>
     </div>
 
