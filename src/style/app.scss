@@ -1,0 +1,14 @@
+@import '../../node_modules/bootstrap/scss/bootstrap';
+@import '../../node_modules/bootstrap-vue/src/index.scss';
+
+//highlight.js theme
+@import '../../node_modules/highlight.js/styles/dracula.css';
+//quill.js
+@import '../../node_modules/quill/dist/quill.core.css';
+@import '../../node_modules/quill/dist/quill.snow.css';
+//quill-emoji
+@import '../../node_modules/quill-emoji/dist/quill-emoji.css';
+
+@import 'style';
+@import 'editor';
+

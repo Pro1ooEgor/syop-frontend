@@ -1,0 +1,26 @@
+.ql-toolbar{
+  //svg{
+  //  width: 10%;
+  //  height: auto;
+  //}
+  //.ql-formats{
+  //  width: 30px;
+  //  height: auto;
+  //}
+  //height: 120px;
+  //size: 100px;
+  span {
+    vertical-align: middle;
+  }
+}
+.quill-editor{
+  button{
+    width: 120px;
+  }
+}
+#editor{
+  font-size: 1em;
+}
+#emoji-palette{
+  height: 50px;
+}
