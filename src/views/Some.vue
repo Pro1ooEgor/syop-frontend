@@ -12,7 +12,6 @@ export default {
   name: 'Some',
   computed: {
     articleTextHtml () {
-      // console.log(this.$store.getters.getArticle)
       return this.$store.getters.getArticle
     }
   }

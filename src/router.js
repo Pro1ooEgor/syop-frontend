@@ -3,6 +3,7 @@ import Router from 'vue-router'
 // import Home from './views/Home.vue'
 import Editor from './components/input/editor/Editor'
 import newArticle from './views/newArticle'
+import Articles from './views/Articles'
 import Some from './views/Some'
 import HelloWorld from './components/HelloWorld'
 
@@ -31,6 +32,7 @@ export default new Router({
       path: '/some',
       name: 'some',
       component: Some
-    }
+    },
+    { path: '/articles', name: 'articles', component: Articles }
   ]
 })

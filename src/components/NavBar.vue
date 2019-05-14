@@ -12,9 +12,16 @@
           <router-link
             tag="li"
             class="nav-item mx-2"
-            to="/article/new"
+            to="/articles"
             active-class="active">
             <a class="nav-link">Articles</a>
+          </router-link>
+          <router-link
+            tag="li"
+            class="nav-item mx-2"
+            to="/article/new"
+            active-class="active">
+            <a class="nav-link">New Article</a>
           </router-link>
           <router-link
             tag="li"
