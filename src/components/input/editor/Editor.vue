@@ -1,24 +1,25 @@
 <template>
   <div>
-    <div>
-      <div class="quill-editor pt-3">
-        <div id="toolbar"></div>
-        <div id="editor" ref="editor" ></div>
-
-        <div class="d-flex justify-content-end pt-2">
-          <button
-              type="button"
-              class="btn btn-success"
-              @click="value">
-            Save
-          </button>
-        </div>
-      </div>
+    <div class="quill-editor pt-3">
+      <!-- Create the editor container -->
+      <div id="toolbar"></div>
+      <div id="editor" ref="editor"></div>
+    </div>
+    <div class="pt-3 text-right">
+      <button
+        type="button"
+        style="width:160px"
+        class="btn btn-outline-success"
+        @click="sendData"
+      >
+        Save
+      </button>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 import hljs from 'highlight.js'
 import Quill from 'quill'
 import { ImageDrop } from 'quill-image-drop-module'
@@ -35,7 +36,7 @@ export default {
   props: {
     value: {
       type: String,
-      default: 'Halo'
+      default: ''
     },
     placeholder: {
       type: String,
@@ -52,6 +53,21 @@ export default {
       content: ''
     }
   },
+  methods: {
+    sendData () {
+      axios
+        .post('http://localhost:8000/api/articles/', {
+          title: 'Test',
+          text: this.content || this.value
+        })
+        .then(response => {
+          console.log(response)
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    }
+  },
   mounted () {
     if (this.$el) {
       this.quill = new Quill(this.$refs.editor, {
@@ -60,7 +76,9 @@ export default {
           syntax: {
             highlight: text => hljs.highlightAuto(text).value
           },
-          imageResize: {},
+          imageResize: {
+            modules: [ 'Resize', 'DisplaySize', 'Toolbar' ]
+          },
           imageDrop: true,
           'emoji-toolbar': true
         },

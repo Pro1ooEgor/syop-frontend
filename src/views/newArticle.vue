@@ -1,10 +1,18 @@
 <template>
   <div>
     <div class="container-fluid">
-      <editor v-model="model" @change="onChange"></editor>
-    </div>
+      <div class="row justify-content-center">
+        <div class="col-9 text-center">
+          <editor v-model="model" @change="onChange"></editor>
+        </div>
+      </div>
 
-    <p v-html="model" class="ql-editor"></p>
+      <div class="row justify-content-center">
+        <div class="col-9">
+          <p v-html="model" class="ql-editor"></p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
