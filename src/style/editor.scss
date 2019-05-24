@@ -1,14 +1,4 @@
 .ql-toolbar{
-  //svg{
-  //  width: 10%;
-  //  height: auto;
-  //}
-  //.ql-formats{
-  //  width: 30px;
-  //  height: auto;
-  //}
-  //height: 120px;
-  //size: 100px;
   span {
     vertical-align: middle;
   }
@@ -19,8 +9,15 @@
   }
 }
 #editor{
-  font-size: 1em;
+  font-size: 0.9em;
 }
 #emoji-palette{
   height: 50px;
+}
+.title-label{
+  font-size: 1.1em;
+}
+.title-input {
+  font-size: 1.2em;
+  font-weight: 500;
 }

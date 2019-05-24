@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container-fluid">
+    <div>
       <div class="row justify-content-center">
         <div class="col-9 text-center">
           <editor v-model="model" @change="onChange"></editor>
@@ -9,7 +9,7 @@
 
       <div class="row justify-content-center">
         <div class="col-9">
-          <p v-html="model" class="ql-editor"></p>
+          <p v-html="model" class="article-view ql-editor"></p>
         </div>
       </div>
     </div>
@@ -38,5 +38,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

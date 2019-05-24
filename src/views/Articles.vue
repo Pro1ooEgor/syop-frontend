@@ -1,10 +1,13 @@
 <template>
-  <div class="container">
-    <div v-for="item in data" class="pt-3">
+  <div class="">
+    <div v-for="item in data" class="row justify-content-center pt-3">
       <brief-article
+        class="col-9"
+        :id="item.id"
         :title="item.title"
         :text="item.text"
         :date="item.date"
+        :author="item.author.username"
       ></brief-article>
     </div>
   </div>
@@ -13,6 +16,7 @@
 <script>
 import axios from 'axios'
 import BriefArticle from './../components/BriefArticle'
+import { baseUrl } from './../constants/api'
 
 export default {
   name: 'Articles',
@@ -26,7 +30,7 @@ export default {
   },
   mounted () {
     axios
-      .get('http://localhost:8000/api/articles/')
+      .get(baseUrl + 'articles/')
       .then(response => {
         this.data = response.data
       })

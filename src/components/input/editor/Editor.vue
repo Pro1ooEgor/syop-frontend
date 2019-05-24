@@ -1,5 +1,13 @@
 <template>
   <div>
+    <div class="text-left pt-3 title-label">Title</div>
+    <div class="pt-2">
+      <b-form-input
+        class="title-input"
+        v-model="title"
+        placeholder="Enter your title"
+      ></b-form-input>
+    </div>
     <div class="quill-editor pt-3">
       <!-- Create the editor container -->
       <div id="toolbar"></div>
@@ -7,7 +15,7 @@
     </div>
     <div class="pt-3 text-right">
       <button
-        type="button"
+        type="submit"
         style="width:160px"
         class="btn btn-outline-success"
         @click="sendData"
@@ -25,6 +33,7 @@ import Quill from 'quill'
 import { ImageDrop } from 'quill-image-drop-module'
 import ImageResize from 'quill-image-resize-module'
 import 'quill-emoji'
+import { baseUrl } from './../../../constants/api'
 
 import toolbarOptions from './toolbarOptions'
 
@@ -50,15 +59,30 @@ export default {
   },
   data () {
     return {
-      content: ''
+      content: '',
+      title: '',
+      quillData: '',
+      text: '',
+      quillInstanse: ''
     }
   },
   methods: {
     sendData () {
+      let html = this.$refs.editor.children[0].innerHTML
+      const quill = this.quillInstanse
+      const text = quill.getText()
+      if (html === '<p><br></p>') html = ''
+      this.content = html
+      this.text = text
+      this.quillData = quill
+      this.$emit('input', this.content)
+      this.$emit('change', { html, text, quill })
       axios
-        .post('http://localhost:8000/api/articles/', {
-          title: 'Test',
-          text: this.content || this.value
+        .post(baseUrl + 'articles/', {
+          title: this.title,
+          html: this.content || this.value,
+          text: this.text,
+          author: this.$store.getters.getAuthor.id
         })
         .then(response => {
           console.log(response)
@@ -87,6 +111,8 @@ export default {
         placeholder: this.placeholder
       })
 
+      this.quillInstanse = this.quill
+
       if (this.value) {
         this.quill.pasteHTML(this.value)
       }
@@ -106,6 +132,8 @@ export default {
         const text = this.quill.getText()
         if (html === '<p><br></p>') html = ''
         this.content = html
+        this.text = text
+        this.quillData = this.quill
         this.$emit('input', this.content)
         this.$emit('change', { html, text, quill })
       })
