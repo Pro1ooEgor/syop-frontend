@@ -29,8 +29,21 @@
           </router-link>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0 mr-5" type="submit">Search</button>
+          <input
+            class="form-control mr-sm-2"
+            v-model="search"
+            type="search"
+            placeholder="Search"
+            aria-label="Search">
+          <router-link
+            to="/articles">
+            <button
+                class="btn btn-outline-success my-2 my-sm-0 mr-5"
+                type="button"
+                @click="searchTitle">
+                Search
+              </button>
+          </router-link>
         </form>
         <div v-if="isAuthorized">
           <b-navbar-nav>
@@ -70,7 +83,8 @@ export default {
       token: '',
       isAuthorized: false,
       errors: '',
-      author: ''
+      author: '',
+      search: ''
     }
   },
   methods: {
@@ -89,15 +103,28 @@ export default {
           console.log(error.response.data)
           this.errors = error.response.data
         })
+    },
+    searchTitle () {
+      axios
+        .get(baseUrl + 'articles/?search=' + this.search)
+        .then(response => {
+          if (response.data !== undefined)
+          {
+            console.log(response.data)
+            this.$state.mutations.setArticles(response.data)
+          }
+        })
+        .catch(error => {
+          console.log(error)
+          console.log(error.response.data)
+          this.errors = error.response.data
+        })
     }
   },
   mounted () {
     this.token = this.$localStorage.get('token')
     if (this.token) {
       this.isAuthorized = true
-      // this.$store.dispatch('setAuthor', this.token)
-      // console.log(this.$store.getters.getAuthor)
-      // console.log(this.$store.state.author)
       axios
         .get(baseUrl + 'checkToken?token=' + this.token)
         .then(response => {

@@ -15,11 +15,14 @@
 
 <script>
 import axios from 'axios'
+import { mapState } from 'vuex'
 import BriefArticle from './../components/BriefArticle'
 import { baseUrl } from './../constants/api'
 
 export default {
   name: 'Articles',
+  props: {
+  },
   data () {
     return {
       data: Object,
@@ -37,6 +40,9 @@ export default {
       .catch(error => {
         console.log(error)
       })
+  },
+  computed: {
+    ...mapState(['articles'])
   },
   components: {
     BriefArticle

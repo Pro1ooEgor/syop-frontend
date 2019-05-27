@@ -7,6 +7,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    articles: undefined,
     article: {
       html: 'halo'
     },
@@ -16,6 +17,9 @@ export default new Vuex.Store({
   getters: {
     getArticle (state) {
       return state.article.html
+    },
+    getArticles (state) {
+      return state.articles
     },
     getAuthor (state) {
       return state.author
@@ -27,6 +31,9 @@ export default new Vuex.Store({
   mutations: {
     changeArticle (state, payload) {
       state.article.html = payload
+    },
+    setArticles (state, payload) {
+      state.articles = payload
     },
     setAuthor (state, payload) {
       state.author = payload
