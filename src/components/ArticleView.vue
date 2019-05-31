@@ -1,12 +1,17 @@
 <template>
-  <div class="row justify-content-center">
-    <div class="col-9 pt-3">
-      <h2 class="title text-center">{{ title }}</h2>
-      <p v-html="html" class="ql-editor"></p>
-<!--      <div class="ql-editor">{{ html }}</div>-->
-      <div class="row pb-4">
-        <div class="col-5 text-left">{{ displayedDate }}</div>
-        <div class="col text-right">{{ author.username }}</div>
+  <div>
+    <div class="row justify-content-center">
+      <div class="col-8">
+        <h2 class="title text-center pt-3">{{ title }}</h2>
+        <p v-html="html" class="ql-editor"></p>
+      </div>
+    </div>
+    <div class="row justify-content-center pt-3">
+      <div class="col-8">
+        <div class="row">
+          <div class="col text-left">{{ displayedDate }}</div>
+          <div class="col text-right">{{ author.username }}</div>
+        </div>
       </div>
     </div>
   </div>
@@ -35,10 +40,11 @@ export default {
 
 <style scoped>
 .title {
-  font-size: 1.2em;
+  font-size: 1.4em;
   font-weight: 500;
 }
   .ql-editor {
-    font-size: 1.2em;
+    font-size: 1.1em;
+    padding-left: 0;
   }
 </style>

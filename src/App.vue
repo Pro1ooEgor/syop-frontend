@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <nav-bar></nav-bar>
-    <div class="container-fluid">
+    <div class="mycontainer container-fluid">
       <router-view></router-view>
     </div>
   </div>
@@ -17,3 +17,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.mycontainer {
+  padding-left: 0;
+  padding-right: 0;
+}
+</style>

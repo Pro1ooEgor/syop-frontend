@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div>
     <article-view
       :title="data.title"
       :text="data.text"
@@ -7,6 +7,19 @@
       :date="data.date"
       :author="data.author"
     ></article-view>
+    <comment class="pt-5"></comment>
+<!--    <div class="row justify-content-center">-->
+<!--      <div class="col-8 pt-3 text-right">-->
+<!--        <button-->
+<!--          type="button"-->
+<!--          style="width:140px"-->
+<!--          class="btn btn-outline-success"-->
+<!--          @click="sendData"-->
+<!--        >-->
+<!--          Save-->
+<!--        </button>-->
+<!--      </div>-->
+<!--    </div>-->
   </div>
 </template>
 
@@ -14,6 +27,7 @@
 import axios from 'axios'
 import { baseUrl } from './../constants/api'
 import articleView from './../components/ArticleView'
+import comment from './../components/comment'
 
 export default {
   name: 'ArticleView',
@@ -23,7 +37,8 @@ export default {
     }
   },
   components: {
-    articleView
+    articleView,
+    comment
   },
   mounted () {
     console.log(baseUrl + 'article/' + this.$route.params.id + '/')

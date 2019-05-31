@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container">
-      <form class="needs-validation" novalidate action="/articles" methos="GET">
+      <form class="needs-validation" ref="form" novalidate action="/" methos="post">
         <div class="form-row justify-content-center pt-4">
           <div class="col-lg-7 col-sm-9 text-center">
             <h3>Register your account</h3>
@@ -67,7 +67,7 @@
             <div id="buttonTooltip">
               <button
                 ref="buttonTooltip"
-                type="submit"
+                type="button"
                 class="btn btn-success"
                 :disabled="!isCorrectlyFilled"
                 @click="sendData"
@@ -187,6 +187,7 @@ export default {
         })
         .then(response => {
           console.log(response)
+          this.$refs.form.submit()
         })
         .catch(error => {
           console.log(error)

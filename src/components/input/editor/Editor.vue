@@ -1,28 +1,34 @@
 <template>
   <div>
-    <div class="text-left pt-3 title-label">Title</div>
-    <div class="pt-2">
-      <b-form-input
-        class="title-input"
-        v-model="title"
-        placeholder="Enter your title"
-      ></b-form-input>
-    </div>
-    <div class="quill-editor pt-3">
-      <!-- Create the editor container -->
-      <div id="toolbar"></div>
-      <div id="editor" ref="editor"></div>
-    </div>
-    <div class="pt-3 text-right">
-      <button
-        type="submit"
-        style="width:160px"
-        class="btn btn-outline-success"
-        @click="sendData"
-      >
-        Save
-      </button>
-    </div>
+    <form
+      ref="form"
+      action="/articles"
+      methos="post"
+    >
+      <div class="text-left pt-3 title-label">Title</div>
+      <div class="pt-2">
+        <b-form-input
+          class="title-input"
+          v-model="title"
+          placeholder="Enter your title"
+        ></b-form-input>
+      </div>
+      <div class="quill-editor pt-3">
+        <!-- Create the editor container -->
+        <div id="toolbar"></div>
+        <div id="editor" ref="editor"></div>
+      </div>
+      <div class="pt-3 text-right">
+        <button
+          type="button"
+          style="width:160px"
+          class="btn btn-outline-success"
+          @click="sendData"
+        >
+          Save
+        </button>
+      </div>
+    </form>
   </div>
 </template>
 
@@ -86,6 +92,7 @@ export default {
         })
         .then(response => {
           console.log(response)
+          this.$refs.form.submit()
         })
         .catch(error => {
           console.log(error)

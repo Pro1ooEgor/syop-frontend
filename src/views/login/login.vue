@@ -6,7 +6,7 @@
     <div class="container">
       <form
         ref="form"
-        action="/articles"
+        action="/"
         methos="GET"
       >
         <div class="form-row justify-content-center pt-3">
@@ -14,7 +14,7 @@
             <h3>Login</h3>
           </div>
           <div class="col-lg-7 col-sm-9 pt-0">
-            <label>Username</label>
+            <label>Username or Email</label>
             <v-input
               type="text"
               placeholder="Login"
@@ -109,5 +109,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>
