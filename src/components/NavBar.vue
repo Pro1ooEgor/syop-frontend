@@ -20,13 +20,6 @@
             v-if="isAuthorized">
             <a class="nav-link">New Article</a>
           </router-link>
-          <router-link
-            tag="li"
-            class="nav-item mx-2"
-            to="/some"
-            active-class="active">
-            <a class="nav-link">Some</a>
-          </router-link>
         </ul>
         <form class="form-inline my-2 my-lg-0">
           <input
@@ -102,13 +95,13 @@ export default {
           console.log(error.response.data)
           this.errors = error.response.data
         })
+      this.$store.commit('setAuthor', {})
     },
     searchTitle () {
       axios
         .get(baseUrl + 'articles/?search=' + this.search)
         .then(response => {
-          if (response.data !== undefined)
-          {
+          if (response.data !== undefined) {
             this.$store.commit('setArticles', response.data)
           }
         })

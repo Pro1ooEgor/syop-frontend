@@ -7,28 +7,30 @@
       :date="data.date"
       :author="data.author"
     ></article-view>
-    <comment
-      :commentText="commentText"
-      ref="comment"
-      class="pt-5"
-      :rows="2"
-      placeholder="Write your comment here ..."
-    ></comment>
-    <div class="row justify-content-center">
-      <div class="col-8 pt-3 text-right">
-        <button
-          type="button"
-          style="width:140px"
-          class="btn btn-outline-success"
-          @click="sendData"
-        >
-          Save
-        </button>
+    <div v-if="this.$store.getters.getAuthor.id">
+      <comment
+        :commentText="commentText"
+        ref="comment"
+        class="pt-5"
+        :rows="2"
+        placeholder="Write your comment here ..."
+      ></comment>
+      <div class="row justify-content-center">
+        <div class="col-8 pt-3 text-right">
+          <button
+            type="button"
+            style="width:140px"
+            class="btn btn-outline-success"
+            @click="sendData"
+          >
+            Save
+          </button>
+        </div>
       </div>
     </div>
     <div v-if="this.data.id" class="row justify-content-center">
-      <div class="col-8">
-        <div v-for="comment in comments" class="pt-3">
+      <div class="col-8 pt-3">
+        <div v-for="comment in comments" class="pt-2">
           <h5>{{ comment.author.username }}</h5>
           <p>{{ comment.text }}</p>
           <div>{{ displayedDate(comment.date) }}</div>
