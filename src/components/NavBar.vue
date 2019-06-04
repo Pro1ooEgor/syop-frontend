@@ -48,9 +48,8 @@
         <div v-if="isAuthorized">
           <b-navbar-nav>
             <b-nav-item-dropdown right>
-              <!-- Using 'button-content' slot -->
               <template slot="button-content">{{ author.username}}</template>
-              <b-dropdown-item to="/articles">Profile</b-dropdown-item>
+              <b-dropdown-item to="/profile">Profile</b-dropdown-item>
               <b-dropdown-item to="/" @click="singOut">Sign Out</b-dropdown-item>
             </b-nav-item-dropdown>
           </b-navbar-nav>
