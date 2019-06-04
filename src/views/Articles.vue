@@ -1,6 +1,6 @@
 <template>
-  <div class="">
-    <div v-for="item in data" class="row justify-content-center pt-3">
+  <div>
+    <div v-for="item in checkArticles" class="row justify-content-center pt-3">
       <brief-article
         class="col-9"
         :id="item.id"
@@ -15,7 +15,6 @@
 
 <script>
 import axios from 'axios'
-import { mapState } from 'vuex'
 import BriefArticle from './../components/BriefArticle'
 import { baseUrl } from './../constants/api'
 
@@ -31,18 +30,32 @@ export default {
       date: Date
     }
   },
+  methods: {
+    getData () {
+      axios
+        .get(baseUrl + 'articles/')
+        .then(response => {
+          this.data = response.data
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    }
+  },
   mounted () {
-    axios
-      .get(baseUrl + 'articles/')
-      .then(response => {
-        this.data = response.data
-      })
-      .catch(error => {
-        console.log(error)
-      })
+    this.getData()
   },
   computed: {
-    ...mapState(['articles'])
+    checkArticles () {
+      if (this.$store.getters.getArticles.length > 0) {
+        return this.$store.getters.getArticles
+      } else {
+        return this.data
+      }
+    }
+  },
+  destroyed () {
+    this.$store.commit('setArticles', [])
   },
   components: {
     BriefArticle

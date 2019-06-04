@@ -7,10 +7,11 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    articles: undefined,
+    articles: [],
     article: {
       html: 'halo'
     },
+    comment: String,
     author: {},
     error: {}
   },
@@ -20,6 +21,9 @@ export default new Vuex.Store({
     },
     getArticles (state) {
       return state.articles
+    },
+    getComment (state) {
+      return state.comment
     },
     getAuthor (state) {
       return state.author
@@ -34,6 +38,9 @@ export default new Vuex.Store({
     },
     setArticles (state, payload) {
       state.articles = payload
+    },
+    setComment (state, payload) {
+      state.comment = payload
     },
     setAuthor (state, payload) {
       state.author = payload

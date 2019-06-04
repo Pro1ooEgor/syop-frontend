@@ -110,8 +110,7 @@ export default {
         .then(response => {
           if (response.data !== undefined)
           {
-            console.log(response.data)
-            this.$state.mutations.setArticles(response.data)
+            this.$store.commit('setArticles', response.data)
           }
         })
         .catch(error => {
@@ -119,6 +118,7 @@ export default {
           console.log(error.response.data)
           this.errors = error.response.data
         })
+      this.search = ''
     }
   },
   mounted () {
